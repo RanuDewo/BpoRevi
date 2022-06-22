@@ -16,3 +16,4 @@
 
 <!-- Template Main CSS File -->
 <link href="{{asset('tmp/assets/css/style.css')}}" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

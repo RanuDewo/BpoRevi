@@ -18,6 +18,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::get('master_data' , 'MasterDataController@index');
+    Route::post('master_data' , 'MasterDataController@store');
+    Route::get('master_data/hapus/{id}' , 'MasterDataController@destroy');
+    Route::get('master_data/edit/{id}' , 'MasterDataController@edit');
+    Route::post('master_data/update' , 'MasterDataController@update');
     Route::get('log-out', 'HomeController@logout');
 });
 
