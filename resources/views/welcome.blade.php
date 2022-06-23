@@ -1,3 +1,6 @@
+@section('title')
+    Dashboard
+@endsection
 @extends('layouts.layout')
 @section('content')
     <main id="main" class="main">
