@@ -270,41 +270,26 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="{{ request()->is('master_data*') ? 'nav-link' : 'nav-link collapsed' }}"
-                    href="{{ url('master_data') }}">
-                    <i class="bi bi-grid"></i>
-                    <span>Master Data</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="{{ request()->is('master_area*') ? 'nav-link' : 'nav-link collapsed' }}" href="{{ url('master_area') }}">
-                    <i class="bi bi-grid"></i>
-                    <span>Master Area</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="{{ request()->is('master_cabang*') ? 'nav-link' : 'nav-link collapsed' }}" href="{{ url('master_cabang') }}">
-                    <i class="bi bi-grid"></i>
-                    <span>Master Cabang</span>
-                </a>
-            </li>
-
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse"
                     href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Menu</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-menu-button-wide"></i><span>Master Data</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="#">
-                            <i class="bi bi-circle"></i><span>Menu 1</span>
+                        <a href="{{ url('master_data') }}">
+                            <i class="bi bi-circle"></i><span>Data Master</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="bi bi-circle"></i><span>Menu 2</span>
+                        <a href="{{ url('master_area') }}">
+                            <i class="bi bi-circle"></i><span>Master Area</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('master_cabang') }}">
+                            <i class="bi bi-circle"></i><span>Master Cabang</span>
                         </a>
                     </li>
 
@@ -313,11 +298,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse"
+                <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse"
                     href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Master SPG</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="{{ url('upload_data_spg') }}">
                             <i class="bi bi-circle"></i><span>Upload SPG</span>
