@@ -4,6 +4,7 @@
 <script src="{{ asset('tmp/assets/vendor/echarts/echarts.min.js') }}"></script>
 <script src="{{ asset('tmp/assets/vendor/quill/quill.min.js') }}"></script>
 <script src="{{ asset('tmp/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="{{ asset('tmp/assets/vendor/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('tmp/assets/vendor/php-email-form/validate.js') }}"></script>
 

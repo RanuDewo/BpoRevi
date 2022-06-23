@@ -1,6 +1,5 @@
 @extends('layouts.layout')
 @section('content')
-
     <main id="main" class="main">
 
         <div class="pagetitle">
@@ -24,7 +23,7 @@
                                 data-bs-target="#basicModal"><i class="ri-add-box-fill"></i> Tambah Data</button>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable table-striped">
+                            <table class="table datatable table-striped" id="tabel-data">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -52,7 +51,7 @@
                                             </td>
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
-                                                    data-bs-target="#editModal"><i class="bi bi-pencil-square"></i>
+                                                    data-bs-target="#editModal" id="edit"><i class="bi bi-pencil-square"></i>
                                                     Edit</a>
                                                 <a href="{{ url('/master_data/hapus/' . $i->id) }}" id="hapus"
                                                     class="btn btn-danger btn-sm mt-2 mr-2 hapus"
@@ -169,10 +168,11 @@
                     }
                 })
             })
-            $('.datatable').DataTable({
-                responsive: true
-            });
+            // $('.datatable').DataTable({
+            //     responsive: true
+            // });
 
         })
     </script>
+
 @endsection
