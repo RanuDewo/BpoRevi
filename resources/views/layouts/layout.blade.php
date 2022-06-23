@@ -320,7 +320,7 @@
 
     @yield('content')
 
-    <footer id="footer" class="footer fixed-bottom">
+    <footer id="footer" class="footer bottom-50 end-50">
         <div class="copyright">
             &copy; Copyright <strong><span></span></strong>. All Rights Reserved
         </div>
