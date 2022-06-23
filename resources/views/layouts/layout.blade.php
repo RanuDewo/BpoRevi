@@ -275,6 +275,18 @@
                     <span>Master Data</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ url('master_area') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Master Area</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ url('master_cabang') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Master Cabang</span>
+                </a>
+            </li>
 
 
             <li class="nav-item">

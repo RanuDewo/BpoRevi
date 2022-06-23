@@ -9,6 +9,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('welcome');
     });
     Route::get('master_data', 'MasterDataController@index');
+    Route::get('master_data/create', 'MasterDataController@create');
     Route::post('master_data', 'MasterDataController@store');
     Route::get('master_data/hapus/{id}', 'MasterDataController@destroy');
     Route::get('master_data/edit/{id}', 'MasterDataController@edit');
