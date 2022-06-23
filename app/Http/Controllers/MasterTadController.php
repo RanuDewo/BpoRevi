@@ -14,5 +14,26 @@ class MasterTadController extends Controller
         return view('tad.index', compact('m'));
     }
 
+    public function create()
+    {
+        return view('masterdata.create');
+    }
+
+    public function store(Request $request)
+    {
+        DB::table('users')->insert([
+            'name'     => $request->nama,
+            'username' => $request->username,
+            'email'    => $request->email,
+            'status'   => '0',
+            'flag'     => '0',
+            'flag2'    => '1',
+            'password' => '$2y$10$CcHEBRqPx9Wg15XL.977feNSqblsJWX6W8VkyffgwfOW9SRCdyvmK'
+
+        ]);
+        $m = DB::table('users')->get();
+        return view('tad.index', compact('m'));
+    }
+
    
 }
