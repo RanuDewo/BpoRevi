@@ -16,4 +16,5 @@
 
 <!-- Template Main CSS File -->
 <link href="{{asset('tmp/assets/css/style.css')}}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

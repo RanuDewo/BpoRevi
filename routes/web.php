@@ -3,26 +3,27 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('master_data' , 'MasterDataController@index');
-    Route::post('master_data' , 'MasterDataController@store');
-    Route::get('master_data/hapus/{id}' , 'MasterDataController@destroy');
-    Route::get('master_data/edit/{id}' , 'MasterDataController@edit');
-    Route::post('master_data/update' , 'MasterDataController@update');
+    Route::get('master_data', 'MasterDataController@index');
+    Route::get('master_data/create', 'MasterDataController@create');
+    Route::post('master_data', 'MasterDataController@store');
+    Route::get('master_data/hapus/{id}', 'MasterDataController@destroy');
+    Route::get('master_data/edit/{id}', 'MasterDataController@edit');
+    Route::post('master_data/update', 'MasterDataController@update');
+
+    Route::get('master_area', 'MasterAreaCotroller@index');
+    Route::post('master_area', 'MasterAreaCotroller@store');
+    Route::get('master_area/hapus/{id}', 'MasterAreaCotroller@destroy');
+    Route::get('master_area/edit/{id}', 'MasterAreaCotroller@edit');
+    Route::get('master_area/update', 'MasterAreaCotroller@update');
+
+    Route::resource('master_cabang', 'MasterCabangController');
+    Route::get('master_cabang/hapus/{id}', 'MasterCabangController@destroy');
+
     Route::get('log-out', 'HomeController@logout');
 });
 

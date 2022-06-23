@@ -3,12 +3,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Master Data</h1>
+            <h1>Master Area</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
 
-                    <li class="breadcrumb-item active">Master Data</li>
+                    <li class="breadcrumb-item active">Master Area</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -28,7 +28,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama</th>
-                                        <th scope="col">Flag</th>
+
                                         <th scope="col">Action</th>
 
                                     </tr>
@@ -37,25 +37,15 @@
                                     @foreach ($m as $i)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $i->nama }}</td>
-                                            <td>
-                                                @if ($i->flag == 1)
-                                                    source off order
-                                                @elseif ($i->flag == 2)
-                                                    aktifity
-                                                @elseif ($i->flag == 3)
-                                                    cancel
-                                                @elseif ($i->flag == 4)
-                                                    reject
-                                                @endif
-                                            </td>
+                                            <td>{{ $i->nama_cabang }}</td>
+
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
                                                     data-bs-target="#editModal" id="edit"><i class="bi bi-pencil-square"></i>
                                                     Edit</a>
-                                                <a href="{{ url('/master_data/hapus/' . $i->id) }}" id="hapus"
+                                                <a href="{{ url('/master_cabang/hapus/' . $i->id) }}" id="hapus"
                                                     class="btn btn-danger btn-sm mt-2 mr-2 hapus"
-                                                    data-id="{{ $i->nama }}"><i class="bi bi-trash"></i>
+                                                    data-id="{{ $i->nama_cabang }}"><i class="bi bi-trash"></i>
                                                     Hapus</a>
                                             </td>
                                         </tr>
@@ -79,21 +69,12 @@
                         <h5 class="modal-title">Master Data</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_data') }}" method="POST">
+                    <form action="{{ route('master_cabang.store') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group mt-2">
                                 <label for="">Nama</label>
                                 <input type="text" name="nama" class="form-control mt-2" autofocus required>
-                            </div>
-                            <div class="form-group mt-2">
-                                <label for="">Flag</label>
-                                <select name="flag" id="" class="form-select mt-2">
-                                    <option value="1">source off order</option>
-                                    <option value="2">aktifity</option>
-                                    <option value="3">cancel</option>
-                                    <option value="4">reject</option>
-                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -112,10 +93,10 @@
                         <h5 class="modal-title">Edit</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_data/update') }}" method="POST">
+                    <form action="{{ url('master_area/update') }}" method="POST">
                         @csrf
                         <div class="modal-body">
-                            <div id="modal_edit">
+                            <div id="modal_edit1">
 
                             </div>
                         </div>
@@ -161,9 +142,9 @@
                 alert(id);
                 $.ajax({
                     type: 'GET',
-                    url: 'master_data/edit/' + id,
+                    url: 'master_area/edit/' + id,
                     success: function(data) {
-                        $('#modal_edit').html(data)
+                        $('#modal_edit1').html(data)
                         // console.log(data)
                     }
                 })

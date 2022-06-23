@@ -14,6 +14,11 @@ class MasterDataController extends Controller
         return view('masterdata.index', compact('m'));
     }
 
+    public function create()
+    {
+        return view('masterdata.create');
+    }
+
     public function store(Request $request)
     {
         DB::table('master_data')->insert([
