@@ -37,15 +37,15 @@
                                     @foreach ($m as $i)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $i->nama_area }}</td>
+                                            <td>{{ $i->nama_cabang }}</td>
 
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
                                                     data-bs-target="#editModal" id="edit"><i class="bi bi-pencil-square"></i>
                                                     Edit</a>
-                                                <a href="{{ url('/master_area/hapus/' . $i->id) }}" id="hapus"
+                                                <a href="{{ url('/master_cabang/hapus/' . $i->id) }}" id="hapus"
                                                     class="btn btn-danger btn-sm mt-2 mr-2 hapus"
-                                                    data-id="{{ $i->nama_area }}"><i class="bi bi-trash"></i>
+                                                    data-id="{{ $i->nama_cabang }}"><i class="bi bi-trash"></i>
                                                     Hapus</a>
                                             </td>
                                         </tr>
@@ -69,7 +69,7 @@
                         <h5 class="modal-title">Master Data</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_area') }}" method="POST">
+                    <form action="{{ route('master_cabang.store') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group mt-2">

@@ -20,6 +20,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('master_area/edit/{id}', 'MasterAreaCotroller@edit');
     Route::get('master_area/update', 'MasterAreaCotroller@update');
 
+    Route::resource('master_cabang', 'MasterCabangController');
+    Route::get('master_cabang/hapus/{id}', 'MasterCabangController@destroy');
+
     Route::get('log-out', 'HomeController@logout');
 });
 
