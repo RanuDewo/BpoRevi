@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('master_data/edit/{id}' , 'MasterDataController@edit');
     Route::post('master_data/update' , 'MasterDataController@update');
     Route::get('log-out', 'HomeController@logout');
+    Route::get('upload_data_spg' , 'MasterTadController@index');
 });
 
 
