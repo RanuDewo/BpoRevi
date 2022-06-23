@@ -305,7 +305,7 @@
                 <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="{{ url('upload_data_spg') }}">
-                            <i class="bi bi-circle"></i><span>Upload SPG</span>
+                            <i class="bi bi-circle"></i><span>Data SPG</span>
                         </a>
                     </li>
                     <li>

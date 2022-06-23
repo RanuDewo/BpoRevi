@@ -69,10 +69,10 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Master Data</h5>
+                        <h5 class="modal-title">Master Data SPG</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_data') }}" method="POST">
+                    <form action="{{ url('upload_data_spg') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group mt-2">
@@ -80,13 +80,13 @@
                                 <input type="text" name="nama" class="form-control mt-2" autofocus required>
                             </div>
                             <div class="form-group mt-2">
-                                <label for="">Flag</label>
-                                <select name="flag" id="" class="form-select mt-2">
-                                    <option value="1">source off order</option>
-                                    <option value="2">aktifity</option>
-                                    <option value="3">cancel</option>
-                                    <option value="4">reject</option>
-                                </select>
+                                <label for="">Username </label>
+                                <input type="text" name="username" class="form-control mt-2" autofocus required>
+                            </div>
+
+                            <div class="form-group mt-2">
+                                <label for="">Email</label>
+                                <input type="text" name="email" class="form-control mt-2" autofocus required>
                             </div>
                         </div>
                         <div class="modal-footer">
