@@ -168,9 +168,9 @@
                     }
                 })
             })
-            // $('.datatable').DataTable({
-            //     responsive: true
-            // });
+            $('.datatable').DataTable({
+                responsive: true
+            });
 
         })
     </script>

@@ -12,9 +12,9 @@
 <link href="{{asset('tmp/assets/vendor/quill/quill.snow.css')}}" rel="stylesheet">
 <link href="{{asset('tmp/assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
 <link href="{{asset('tmp/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-<link href="{{asset('tmp/assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
+{{-- <link href="{{asset('tmp/assets/vendor/simple-datatables/style.css')}}" rel="stylesheet"> --}}
 
 <!-- Template Main CSS File -->
 <link href="{{asset('tmp/assets/css/style.css')}}" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
