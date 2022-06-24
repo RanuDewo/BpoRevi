@@ -23,7 +23,7 @@
                                 data-bs-target="#basicModal"><i class="ri-add-box-fill"></i> Tambah Data</button>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable table-striped" id="tabel-data">
+                            <table class="table datatable table-striped" id="tabel-data2">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -93,7 +93,7 @@
                         <h5 class="modal-title">Edit</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_area/update') }}" method="POST">
+                    <form action="{{ url('master_cabang/update') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div id="modal_edit1">
@@ -139,19 +139,19 @@
 
             $('.edit').on('click', function() {
                 var id = $(this).data("id");
-                alert(id);
+                // alert(id);
                 $.ajax({
                     type: 'GET',
-                    url: 'master_area/edit/' + id,
+                    url: 'master_cabang/edit/' + id,
                     success: function(data) {
                         $('#modal_edit1').html(data)
                         // console.log(data)
                     }
                 })
             })
-            // $('.datatable').DataTable({
-            //     responsive: true
-            // });
+            $('#tabel-data2').DataTable({
+                responsive: true
+            });
 
         })
     </script>
