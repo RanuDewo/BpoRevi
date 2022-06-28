@@ -37,18 +37,13 @@ class MapingAreaController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('users')->insert([
-            'name'     => $request->nama,
-            'username' => $request->username,
-            'email'    => $request->email,
-            'status'   => '0',
-            'flag'     => '0',
-            'flag2'    => '1',
-            'password' => '$2y$10$CcHEBRqPx9Wg15XL.977feNSqblsJWX6W8VkyffgwfOW9SRCdyvmK'
+        DB::table('maps_area')->insert([
+            'id_area'     => $request->area,
+            'id_cabang'   => $request->cabang,
+            
 
         ]);
-        $m = DB::table('users')->get();
-        return view('tad.index', compact('m'));
+        return redirect('maping_area');
     }
 
    

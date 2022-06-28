@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('upload_data_spg', 'MasterTadController@store');
 
     Route::get('maping_area', 'MapingAreaController@index');
+    Route::post('maping_area', 'MapingAreaController@store');
 });
 
 

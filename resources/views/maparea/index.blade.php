@@ -70,13 +70,13 @@
                         <h5 class="modal-title">Maping Data</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_area') }}" method="POST">
+                    <form action="{{ url('maping_area') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group mt-2">
                               
                                 <label for="">Nama Area</label>
-                                <select class = "form-control">
+                                <select class = "form-control" name ="area">
                                     <?php
                                         $jumA  = count($area);
                                         $jumA-- ;
@@ -87,7 +87,7 @@
                                 </select>
 
                                 <label for="">Nama Cabang</label>
-                                <select class = "form-control">
+                                <select class = "form-control" name ="cabang">
                                     <?php
                                         $jumB  = count($cabang);
                                         $jumB-- ;
