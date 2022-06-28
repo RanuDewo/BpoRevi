@@ -321,7 +321,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse"
                     href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Master SPG</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-menu-button-wide"></i><span>Master User</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
