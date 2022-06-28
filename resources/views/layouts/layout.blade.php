@@ -297,6 +297,27 @@
                 </ul>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse"
+                    href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Master Maping</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ url('maping_area') }}">
+                            <i class="bi bi-circle"></i><span>Maping Area</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('master_area') }}">
+                            <i class="bi bi-circle"></i><span>Maping User</span>
+                        </a>
+                    </li>
+                   
+                </ul>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse"
                     href="#">
