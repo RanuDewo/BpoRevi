@@ -28,6 +28,8 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama</th>
+                                        <th scope="col">Lat</th>
+                                        <th scope="col">Long</th>
 
                                         <th scope="col">Action</th>
 
@@ -38,10 +40,13 @@
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $i->nama_cabang }}</td>
+                                            <td>{{ $i->lat }}</td>
+                                            <td>{{ $i->long }}</td>
 
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
-                                                    data-bs-target="#editModal" id="edit"><i class="bi bi-pencil-square"></i>
+                                                    data-bs-target="#editModal" id="edit"><i
+                                                        class="bi bi-pencil-square"></i>
                                                     Edit</a>
                                                 <a href="{{ url('/master_cabang/hapus/' . $i->id) }}" id="hapus"
                                                     class="btn btn-danger btn-sm mt-2 mr-2 hapus"
@@ -75,6 +80,14 @@
                             <div class="form-group mt-2">
                                 <label for="">Nama</label>
                                 <input type="text" name="nama" class="form-control mt-2" autofocus required>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="">Lat</label>
+                                <input type="text" name="lat" class="form-control mt-2">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="">Long</label>
+                                <input type="text" name="long" class="form-control mt-2">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -155,5 +168,4 @@
 
         })
     </script>
-
 @endsection

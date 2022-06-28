@@ -25,7 +25,9 @@ class MasterCabangController extends Controller
     {
         DB::table('master_cabang')->insert(
             [
-                'nama_cabang' => $request->nama
+                'nama_cabang' => $request->nama,
+                'lat' => $request->lat,
+                'long' => $request->long
             ]
         );
         return redirect()->back()->with('simpan', 'ppp');
@@ -52,6 +54,8 @@ class MasterCabangController extends Controller
         $m = DB::table('master_cabang')->where('id', $request->id)->update(
             [
                 'nama_cabang' => $request->nama,
+                'lat' => $request->lat,
+                'long' => $request->long
 
             ]
         );
