@@ -27,8 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('master_cabang/update', 'MasterCabangController@update');
 
     Route::get('log-out', 'HomeController@logout');
+
     Route::get('upload_data_spg' , 'MasterTadController@index');
     Route::post('upload_data_spg', 'MasterTadController@store');
+
+    Route::get('maping_area', 'MapingAreaController@index');
 });
 
 
