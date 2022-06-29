@@ -23,11 +23,13 @@
                                 data-bs-target="#basicModal"><i class="ri-add-box-fill"></i> Tambah Data</button>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable table-striped" id="tabel-data">
+                            <table class="table datatable table-striped" id="tabel-data2">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama</th>
+                                        <th scope="col">Lat</th>
+                                        <th scope="col">Long</th>
 
                                         <th scope="col">Action</th>
 
@@ -38,10 +40,13 @@
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $i->nama_cabang }}</td>
+                                            <td>{{ $i->lat }}</td>
+                                            <td>{{ $i->long }}</td>
 
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
-                                                    data-bs-target="#editModal" id="edit"><i class="bi bi-pencil-square"></i>
+                                                    data-bs-target="#editModal" id="edit"><i
+                                                        class="bi bi-pencil-square"></i>
                                                     Edit</a>
                                                 <a href="{{ url('/master_cabang/hapus/' . $i->id) }}" id="hapus"
                                                     class="btn btn-danger btn-sm mt-2 mr-2 hapus"
@@ -76,6 +81,14 @@
                                 <label for="">Nama</label>
                                 <input type="text" name="nama" class="form-control mt-2" autofocus required>
                             </div>
+                            <div class="form-group mt-2">
+                                <label for="">Lat</label>
+                                <input type="text" name="lat" class="form-control mt-2">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="">Long</label>
+                                <input type="text" name="long" class="form-control mt-2">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -93,7 +106,7 @@
                         <h5 class="modal-title">Edit</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_area/update') }}" method="POST">
+                    <form action="{{ url('master_cabang/update') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div id="modal_edit1">
@@ -139,21 +152,20 @@
 
             $('.edit').on('click', function() {
                 var id = $(this).data("id");
-                alert(id);
+                // alert(id);
                 $.ajax({
                     type: 'GET',
-                    url: 'master_area/edit/' + id,
+                    url: 'master_cabang/edit/' + id,
                     success: function(data) {
                         $('#modal_edit1').html(data)
                         // console.log(data)
                     }
                 })
             })
-            // $('.datatable').DataTable({
-            //     responsive: true
-            // });
+            $('#tabel-data2').DataTable({
+                responsive: true
+            });
 
         })
     </script>
-
 @endsection

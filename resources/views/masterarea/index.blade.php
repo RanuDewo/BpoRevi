@@ -23,7 +23,7 @@
                                 data-bs-target="#basicModal"><i class="ri-add-box-fill"></i> Tambah Data</button>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable table-striped" id="tabel-data">
+                            <table class="table datatable table-striped" id="tabel-data1">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -39,7 +39,7 @@
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $i->nama_area }}</td>
 
-                                            <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
+                                            <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit1"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
                                                     data-bs-target="#editModal" id="edit"><i class="bi bi-pencil-square"></i>
                                                     Edit</a>
@@ -137,9 +137,9 @@
                 })
             })
 
-            $('.edit').on('click', function() {
+            $('.edit1').on('click', function() {
                 var id = $(this).data("id");
-                alert(id);
+                // alert(id);
                 $.ajax({
                     type: 'GET',
                     url: 'master_area/edit/' + id,
@@ -149,6 +149,9 @@
                     }
                 })
             })
+            $('#tabel-data1').DataTable({
+                responsive: true
+            });
             // $('.datatable').DataTable({
             //     responsive: true
             // });

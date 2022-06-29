@@ -19,10 +19,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('master_area', 'MasterAreaCotroller@store');
     Route::get('master_area/hapus/{id}', 'MasterAreaCotroller@destroy');
     Route::get('master_area/edit/{id}', 'MasterAreaCotroller@edit');
-    Route::get('master_area/update', 'MasterAreaCotroller@update');
+    Route::post('master_area/update', 'MasterAreaCotroller@update');
 
     Route::resource('master_cabang', 'MasterCabangController');
     Route::get('master_cabang/hapus/{id}', 'MasterCabangController@destroy');
+    Route::get('master_cabang/edit/{id}', 'MasterCabangController@edit');
+    Route::post('master_cabang/update', 'MasterCabangController@update');
 
     Route::get('log-out', 'HomeController@logout');
 
