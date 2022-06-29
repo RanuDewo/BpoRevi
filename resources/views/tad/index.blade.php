@@ -4,12 +4,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Master Data SPG</h1>
+            <h1>Master Data User</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
 
-                    <li class="breadcrumb-item active">Master Data SPG</li>
+                    <li class="breadcrumb-item active">Master Data User</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -21,7 +21,7 @@
                     <div class="card">
                         <div class="card-body">
                             <button class="btn btn-primary  mt-3 mb-3" data-bs-toggle="modal"
-                                data-bs-target="#basicModal"><i class="ri-add-box-fill"></i> Tambah Data SPG</button>
+                                data-bs-target="#basicModal"><i class="ri-add-box-fill"></i> Tambah Data User</button>
 
                             <!-- Table with stripped rows -->
                             <table class="table datatable table-striped">
@@ -45,8 +45,8 @@
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
                                                     data-bs-target="#editModal"><i class="bi bi-pencil-square"></i>
-                                                    Edit</a>
-                                                <a href="{{ url('/master_data/hapus/' . $i->id) }}" id="hapus"
+                                                    Setting Role</a>
+                                                <a href="{{ url('/upload_data_spg/hapus/' . $i->id) }}" id="hapus"
                                                     class="btn btn-danger btn-sm mt-2 mr-2 hapus"
                                                     data-id="{{ $i->name }}"><i class="bi bi-trash"></i>
                                                     Hapus</a>
@@ -69,7 +69,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Master Data SPG</h5>
+                        <h5 class="modal-title">Master Data User</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{ url('upload_data_spg') }}" method="POST">
@@ -102,10 +102,10 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit</h5>
+                        <h5 class="modal-title">Seting Role</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_data/update') }}" method="POST">
+                    <form action="{{ url('upload_data_spg/update') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div id="modal_edit">
@@ -151,10 +151,10 @@
 
             $('.edit').on('click', function() {
                 var id = $(this).data("id");
-                alert(id);
+               // alert(id);
                 $.ajax({
                     type: 'GET',
-                    url: 'master_data/edit/' + id,
+                    url: 'upload_data_spg/edit/' + id,
                     success: function(data) {
                         $('#modal_edit').html(data)
                         // console.log(data)

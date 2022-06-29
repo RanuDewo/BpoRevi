@@ -160,7 +160,7 @@
 
             $('.edit').on('click', function() {
                 var id = $(this).data("id");
-                alert(id);
+               // alert(id);
                 $.ajax({
                     type: 'GET',
                     url: 'master_area/edit/' + id,
