@@ -329,10 +329,12 @@
             </li>
 
             <li class="nav-item">
+
                 <a class="{{ request()->is($b2) ? 'nav-link' : 'nav-link collapsed' }}"
                     data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Master SPG</span><i
                         class="bi bi-chevron-down ms-auto"></i>
+
                 </a>
                 <ul id="components-nav3" class="nav-content collapse {{ request()->is($b2) ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                     <li>

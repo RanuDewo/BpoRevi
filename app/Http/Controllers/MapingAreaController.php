@@ -11,16 +11,23 @@ class MapingAreaController extends Controller
     public function index()
     {
 
-        $users = DB::table('maps_area')
-            ->select('nama_area', 'nama_cabang')
+        $m = DB::table('maps_area')
+            ->select('nama_area', 'nama_cabang','id_maps_area')
             ->join('master_cabang', 'maps_area.id_cabang', '=', 'master_cabang.id')
             ->join('master_area', 'maps_area.id_area', '=', 'master_area.id')
             ->get();
-        // $m = DB::table('users')->get();
-        // return view('tad.index', compact('m'));
 
-        echo "<pre>" ; 
-        print_r($users) ;
+        $cabang  =  DB::table('master_cabang')->get();
+        $area    =  DB::table('master_area')->get();
+        
+        
+       
+
+        
+        return view('maparea.index', ['m'=>$m,'cabang'=>$cabang,'area'=>$area]);
+
+        // echo "<pre>" ; 
+        // print_r($users) ;
     }
 
     public function create()
@@ -30,18 +37,13 @@ class MapingAreaController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('users')->insert([
-            'name'     => $request->nama,
-            'username' => $request->username,
-            'email'    => $request->email,
-            'status'   => '0',
-            'flag'     => '0',
-            'flag2'    => '1',
-            'password' => '$2y$10$CcHEBRqPx9Wg15XL.977feNSqblsJWX6W8VkyffgwfOW9SRCdyvmK'
+        DB::table('maps_area')->insert([
+            'id_area'     => $request->area,
+            'id_cabang'   => $request->cabang,
+            
 
         ]);
-        $m = DB::table('users')->get();
-        return view('tad.index', compact('m'));
+        return redirect('maping_area');
     }
 
    
