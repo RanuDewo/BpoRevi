@@ -332,19 +332,19 @@
 
                 <a class="{{ request()->is($b2) ? 'nav-link' : 'nav-link collapsed' }}"
                     data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Master SPG</span><i
+                    <i class="bi bi-menu-button-wide"></i><span>Master User</span><i
                         class="bi bi-chevron-down ms-auto"></i>
 
                 </a>
                 <ul id="components-nav3" class="nav-content collapse {{ request()->is($b2) ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="{{ url('upload_data_spg') }}">
-                            <i class="bi bi-circle"></i><span>Data SPG</span>
+                            <i class="bi bi-circle"></i><span>Data User</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="bi bi-circle"></i><span>Penempatan SPG</span>
+                        <a href="role_user">
+                            <i class="bi bi-circle"></i><span>Role User</span>
                         </a>
                     </li>
 

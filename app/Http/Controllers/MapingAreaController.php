@@ -19,15 +19,9 @@ class MapingAreaController extends Controller
 
         $cabang  =  DB::table('master_cabang')->get();
         $area    =  DB::table('master_area')->get();
-        
-        
-       
-
-        
+ 
         return view('maparea.index', ['m'=>$m,'cabang'=>$cabang,'area'=>$area]);
 
-        // echo "<pre>" ; 
-        // print_r($users) ;
     }
 
     public function create()
