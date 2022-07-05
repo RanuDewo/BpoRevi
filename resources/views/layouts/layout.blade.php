@@ -273,7 +273,7 @@
 
             <li class="nav-item">
                 <?php
-                $b1 = ['master_data', 'master_area', 'master_cabang'];
+                $b1 = ['master_data', 'master_area', 'master_cabang', 'master_client'];
                 $b2 = ['upload_data_spg'];
                 ?>
                 <a class="{{ request()->is($b1) ? 'nav-link' : 'nav-link collapsed' }}"
@@ -299,6 +299,12 @@
                         <a href="{{ url('master_cabang') }}"
                             class="{{ request()->is('master_cabang*') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Master Cabang</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('master_client') }}"
+                            class="{{ request()->is('master_client*') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Master Client</span>
                         </a>
                     </li>
 
@@ -336,7 +342,8 @@
                         class="bi bi-chevron-down ms-auto"></i>
 
                 </a>
-                <ul id="components-nav3" class="nav-content collapse {{ request()->is($b2) ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                <ul id="components-nav3" class="nav-content collapse {{ request()->is($b2) ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="{{ url('upload_data_spg') }}">
                             <i class="bi bi-circle"></i><span>Data User</span>

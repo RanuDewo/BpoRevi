@@ -37,6 +37,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('maping_area', 'MapingAreaController@index');
     Route::get('role_user', 'MasterTadController@roleUser');
+
+    Route::get('master_client', 'MasterClientController@index');
+    Route::post('master_client', 'MasterClientController@store');
+    Route::get('master_client/hapus/{id}', 'MasterClientController@destroy');
+    Route::get('master_client/edit/{id}', 'MasterClientController@edit');
+    Route::post('master_client/update', 'MasterClientController@update');
 });
 
 
