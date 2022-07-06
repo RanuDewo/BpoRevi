@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('upload_data_spg/hapus/{id}', 'MasterTadController@destroy');
 
     Route::get('maping_area', 'MapingAreaController@index');
+    Route::post('maping_area', 'MapingAreaController@store');
     Route::get('role_user', 'MasterTadController@roleUser');
 
     Route::get('master_client', 'MasterClientController@index');

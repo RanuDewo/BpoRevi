@@ -23,7 +23,7 @@
                                 data-bs-target="#basicModal"><i class="ri-add-box-fill"></i> Tambah Data</button>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable table-striped" id="tabel-data">
+                            <table class="table datatable table-striped" id="abel-data12">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -42,10 +42,11 @@
 
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id_maps_area }}" data-bs-toggle="modal"
-                                                    data-bs-target="#editModal" id="edit"><i class="bi bi-pencil-square"></i>
+                                                    data-bs-target="#editModal" id="edit"><i
+                                                        class="bi bi-pencil-square"></i>
                                                     Edit</a>
-                                                <a href="{{ url('/master_area/hapus/' . $i->id_maps_area) }}" id="hapus"
-                                                    class="btn btn-danger btn-sm mt-2 mr-2 hapus"
+                                                <a href="{{ url('/master_area/hapus/' . $i->id_maps_area) }}"
+                                                    id="hapus" class="btn btn-danger btn-sm mt-2 mr-2 hapus"
                                                     data-id="{{ $i->nama_area }}"><i class="bi bi-trash"></i>
                                                     Hapus</a>
                                             </td>
@@ -73,30 +74,48 @@
                     <form action="{{ url('maping_area') }}" method="POST">
                         @csrf
                         <div class="modal-body">
+
+
                             <div class="form-group mt-2">
-                              
+
                                 <label for="">Nama Area</label>
-                                <select class = "form-control" name ="area">
+                                <select class="form-select" name="area">
                                     <?php
-                                        $jumA  = count($area);
-                                        $jumA-- ;
-                                        for ($x = 0; $x <= $jumA; $x++) {
-                                            echo "<option value=". $area[$x]->id . ">". $area[$x]->nama_area . "</option>" ;  
-                                        }
-                                   ?>
+                                    $jumA = count($area);
+                                    $jumA--;
+                                    for ($x = 0; $x <= $jumA; $x++) {
+                                        echo '<option value=' . $area[$x]->id . '>' . $area[$x]->nama_area . '</option>';
+                                    }
+                                    ?>
                                 </select>
 
+
+                            </div>
+                            <div class="form-group mt-2">
                                 <label for="">Nama Cabang</label>
-                                <select class = "form-control" name ="cabang">
+                                <select class="form-select" name="cabang">
                                     <?php
-                                        $jumB  = count($cabang);
-                                        $jumB-- ;
-                                        for ($x = 0; $x <= $jumB; $x++) {
-                                            echo "<option value=". $cabang[$x]->id . ">". $cabang[$x]->nama_cabang . "</option>" ;  
-                                        }
-                                   ?>
+                                    $jumB = count($cabang);
+                                    $jumB--;
+                                    for ($x = 0; $x <= $jumB; $x++) {
+                                        echo '<option value=' . $cabang[$x]->id . '>' . $cabang[$x]->nama_cabang . '</option>';
+                                    }
+                                    ?>
                                 </select>
                             </div>
+
+                            <div class="form-group mt-2">
+                                <label for="">Nama Client</label>
+
+                                <select name="nama_client" id="" class="form-select">
+                                    @foreach ($c as $i)
+                                        <option value="{{ $i->id }}">{{ $i->nama_client }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -160,7 +179,7 @@
 
             $('.edit').on('click', function() {
                 var id = $(this).data("id");
-               // alert(id);
+                // alert(id);
                 $.ajax({
                     type: 'GET',
                     url: 'master_area/edit/' + id,
@@ -170,11 +189,13 @@
                     }
                 })
             })
+            $('#tabel-data12').DataTable({
+                responsive: true
+            });
             // $('.datatable').DataTable({
             //     responsive: true
             // });
 
         })
     </script>
-
 @endsection
