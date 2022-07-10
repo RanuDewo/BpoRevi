@@ -273,8 +273,9 @@
 
             <li class="nav-item">
                 <?php
-                $b1 = ['master_data', 'master_area', 'master_cabang'];
+                $b1 = ['master_data', 'master_area', 'master_cabang', 'master_client'];
                 $b2 = ['upload_data_spg'];
+                $b3 = ['maping_area'];
                 ?>
                 <a class="{{ request()->is($b1) ? 'nav-link' : 'nav-link collapsed' }}"
                     data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -301,6 +302,12 @@
                             <i class="bi bi-circle"></i><span>Master Cabang</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ url('master_client') }}"
+                            class="{{ request()->is('master_client*') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Master Client</span>
+                        </a>
+                    </li>
 
 
                 </ul>
@@ -308,14 +315,14 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse"
+                <a class="{{ request()->is($b3) ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#components-nav2" data-bs-toggle="collapse"
                     href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Master Maping</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="components-nav2" class="nav-content collapse {{ request()->is($b3) ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ url('maping_area') }}">
+                        <a href="{{ url('maping_area') }}" class="{{ request()->is('maping_area*') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Maping Area</span>
                         </a>
                     </li>
@@ -336,7 +343,8 @@
                         class="bi bi-chevron-down ms-auto"></i>
 
                 </a>
-                <ul id="components-nav3" class="nav-content collapse {{ request()->is($b2) ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                <ul id="components-nav3" class="nav-content collapse {{ request()->is($b2) ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="{{ url('upload_data_spg') }}">
                             <i class="bi bi-circle"></i><span>Data User</span>

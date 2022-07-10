@@ -3,12 +3,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Maps Area</h1>
+            <h1>Master Client</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
 
-                    <li class="breadcrumb-item active">Master Area</li>
+                    <li class="breadcrumb-item active">Master Client</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -23,12 +23,13 @@
                                 data-bs-target="#basicModal"><i class="ri-add-box-fill"></i> Tambah Data</button>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable table-striped" id="abel-data12">
+                            <table class="table datatable table-striped" id="tabel-data1">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Nama Area</th>
-                                        <th scope="col">Nama Cabang</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Alamat</th>
+
                                         <th scope="col">Action</th>
 
                                     </tr>
@@ -37,17 +38,16 @@
                                     @foreach ($m as $i)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $i->nama_area }}</td>
-                                            <td>{{ $i->nama_cabang }}</td>
+                                            <td>{{ $i->nama_client }}</td>
+                                            <td>{{ $i->alamat }}</td>
 
-                                            <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
-                                                    data-id="{{ $i->id_maps_area }}" data-bs-toggle="modal"
-                                                    data-bs-target="#editModal" id="edit"><i
-                                                        class="bi bi-pencil-square"></i>
+                                            <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit_client"
+                                                    data-id="{{ $i->id }}" data-bs-toggle="modal"
+                                                    data-bs-target="#editModal" id="edit"><i class="bi bi-pencil-square"></i>
                                                     Edit</a>
-                                                <a href="{{ url('/master_area/hapus/' . $i->id_maps_area) }}"
-                                                    id="hapus" class="btn btn-danger btn-sm mt-2 mr-2 hapus"
-                                                    data-id="{{ $i->nama_area }}"><i class="bi bi-trash"></i>
+                                                <a href="{{ url('/master_client/hapus/' . $i->id) }}" id="hapus"
+                                                    class="btn btn-danger btn-sm mt-2 mr-2 hapus"
+                                                    data-id="{{ $i->nama_client }}"><i class="bi bi-trash"></i>
                                                     Hapus</a>
                                             </td>
                                         </tr>
@@ -68,54 +68,22 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Maping Data</h5>
+                        <h5 class="modal-title">Master Data</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('maping_area') }}" method="POST">
+                    <form action="{{ url('master_client') }}" method="POST">
                         @csrf
                         <div class="modal-body">
-
-
                             <div class="form-group mt-2">
-
-                                <label for="">Nama Area</label>
-                                <select class="form-select" name="area">
-                                    <?php
-                                    $jumA = count($area);
-                                    $jumA--;
-                                    for ($x = 0; $x <= $jumA; $x++) {
-                                        echo '<option value=' . $area[$x]->id . '>' . $area[$x]->nama_area . '</option>';
-                                    }
-                                    ?>
-                                </select>
-
-
+                                <label for="">Nama</label>
+                                <input type="text" name="nama_client" class="form-control mt-2" autofocus required>
                             </div>
+                        </div>
+                        <div class="modal-body">
                             <div class="form-group mt-2">
-                                <label for="">Nama Cabang</label>
-                                <select class="form-select" name="cabang">
-                                    <?php
-                                    $jumB = count($cabang);
-                                    $jumB--;
-                                    for ($x = 0; $x <= $jumB; $x++) {
-                                        echo '<option value=' . $cabang[$x]->id . '>' . $cabang[$x]->nama_cabang . '</option>';
-                                    }
-                                    ?>
-                                </select>
+                                <label for="">Alamat</label>
+                                <textarea type="text" name="alamat" class="form-control mt-2" maxlength="200" required></textarea>
                             </div>
-
-                            <div class="form-group mt-2">
-                                <label for="">Nama Client</label>
-
-                                <select name="nama_client" id="" class="form-select">
-                                    @foreach ($c as $i)
-                                        <option value="{{ $i->id }}">{{ $i->nama_client }}</option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -133,10 +101,10 @@
                         <h5 class="modal-title">Edit</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('master_area/update') }}" method="POST">
+                    <form action="{{ url('master_client/update') }}" method="POST">
                         @csrf
                         <div class="modal-body">
-                            <div id="modal_edit1">
+                            <div id="modal_edit_client">
 
                             </div>
                         </div>
@@ -177,19 +145,19 @@
                 })
             })
 
-            $('.edit').on('click', function() {
+            $('.edit_client').on('click', function() {
                 var id = $(this).data("id");
                 // alert(id);
                 $.ajax({
                     type: 'GET',
-                    url: 'master_area/edit/' + id,
+                    url: 'master_client/edit/' + id,
                     success: function(data) {
-                        $('#modal_edit1').html(data)
-                        // console.log(data)
+                        $('#modal_edit_client').html(data)
+                        console.log(data)
                     }
                 })
             })
-            $('#tabel-data12').DataTable({
+            $('#tabel-data1').DataTable({
                 responsive: true
             });
             // $('.datatable').DataTable({
@@ -198,4 +166,5 @@
 
         })
     </script>
+
 @endsection
