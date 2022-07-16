@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Imports\UserImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class MasterTadController extends Controller
 {
     public function index()
     {
         $m = DB::table('users')
-            ->where('username','<>','superadmin')->get();
+            ->where('username', '<>', 'superadmin')->get();
         return view('tad.index', compact('m'));
     }
 
@@ -40,7 +43,7 @@ class MasterTadController extends Controller
     public function roleUser()
     {
         $m = DB::table('users')
-            ->where('username','<>','superadmin')->get();
+            ->where('username', '<>', 'superadmin')->get();
         return view('tad.index', compact('m'));
     }
 
@@ -49,7 +52,7 @@ class MasterTadController extends Controller
         $m = DB::table('users')->where('id', $id)->first();
         $cabang  =  DB::table('master_cabang')->get();
         $area    =  DB::table('master_area')->get();
-        return view('tad.edit', ['m'=>$m,'cabang'=>$cabang,'area'=>$area]);
+        return view('tad.edit', ['m' => $m, 'cabang' => $cabang, 'area' => $area]);
     }
 
 
@@ -78,5 +81,14 @@ class MasterTadController extends Controller
         return redirect('upload_data_spg');
     }
 
-   
+
+    public function storeExcel(Request $request)
+    {
+        $this->validate($request, ['file' => 'required|mimes:csv,xls,xlsx']);
+        $file = $request->file('file');
+        $nama_file = rand().$file->getClientOriginalName();
+        $file->move('file_user',$nama_file);
+        Excel::import(new UserImport, public_path('/file_user/'.$nama_file));
+        return redirect()->back();
+    }
 }

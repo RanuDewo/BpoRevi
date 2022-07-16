@@ -285,6 +285,12 @@
                 <ul id="components-nav" class="nav-content collapse {{ request()->is($b1) ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
                     <li>
+                        <a href="{{ url('master_client') }}"
+                            class="{{ request()->is('master_client*') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Master Client</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ url('master_data') }}"
                             class="{{ request()->is('master_data*') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Data Master</span>
@@ -302,12 +308,7 @@
                             <i class="bi bi-circle"></i><span>Master Cabang</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('master_client') }}"
-                            class="{{ request()->is('master_client*') ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Master Client</span>
-                        </a>
-                    </li>
+
 
 
                 </ul>

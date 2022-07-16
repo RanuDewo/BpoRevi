@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('upload_data_spg' , 'MasterTadController@index');
     Route::post('upload_data_spg', 'MasterTadController@store');
+    Route::post('upload_data_spg/excel', 'MasterTadController@storeExcel');
     Route::get('upload_data_spg' , 'MasterTadController@index');
     Route::get('upload_data_spg/edit/{id}', 'MasterTadController@edit');
     Route::post('upload_data_spg/update', 'MasterTadController@update');
