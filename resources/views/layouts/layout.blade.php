@@ -259,6 +259,12 @@
 
     </header>
     <!-- End Header -->
+    <?php
+    $b1 = ['master_data', 'master_area', 'master_cabang', 'master_client'];
+    $b2 = ['upload_data_spg'];
+    $b3 = ['maping_area'];
+    $b4 = ['input_prospek'];
+    ?>
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -272,14 +278,9 @@
             </li>
 
             <li class="nav-item">
-                <?php
-                $b1 = ['master_data', 'master_area', 'master_cabang', 'master_client'];
-                $b2 = ['upload_data_spg'];
-                $b3 = ['maping_area'];
-                ?>
                 <a class="{{ request()->is($b1) ? 'nav-link' : 'nav-link collapsed' }}"
                     data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Master Data</span><i
+                    <i class="bi bi-clipboard-data"></i><span>Master Data</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse {{ request()->is($b1) ? 'show' : '' }}"
@@ -316,14 +317,32 @@
 
 
             <li class="nav-item">
-                <a class="{{ request()->is($b3) ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#components-nav2" data-bs-toggle="collapse"
-                    href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Master Maping</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                <a class="{{ request()->is($b4) ? 'nav-link' : 'nav-link collapsed' }}"
+                    data-bs-target="#components-nav4" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-receipt"></i><span>Data Tansaksi</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="components-nav2" class="nav-content collapse {{ request()->is($b3) ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                <ul id="components-nav4" class="nav-content collapse {{ request()->is($b4) ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ url('maping_area') }}" class="{{ request()->is('maping_area*') ? 'active' : '' }}">
+                        <a href="{{ url('input_prospek') }}"
+                            class="{{ request()->is('input_prospek*') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Input Prospek</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="{{ request()->is($b3) ? 'nav-link' : 'nav-link collapsed' }}"
+                    data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-map"></i><span>Master Maping</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav2" class="nav-content collapse {{ request()->is($b3) ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ url('maping_area') }}"
+                            class="{{ request()->is('maping_area*') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Maping Area</span>
                         </a>
                     </li>
@@ -340,8 +359,7 @@
 
                 <a class="{{ request()->is($b2) ? 'nav-link' : 'nav-link collapsed' }}"
                     data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Master User</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-people"></i><span>Master User</span><i class="bi bi-chevron-down ms-auto"></i>
 
                 </a>
                 <ul id="components-nav3" class="nav-content collapse {{ request()->is($b2) ? 'show' : '' }}"
