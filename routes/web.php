@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('upload_data_spg' , 'MasterTadController@index');
     Route::post('upload_data_spg', 'MasterTadController@store');
+    Route::post('upload_data_spg/excel', 'MasterTadController@storeExcel');
     Route::get('upload_data_spg' , 'MasterTadController@index');
     Route::get('upload_data_spg/edit/{id}', 'MasterTadController@edit');
     Route::post('upload_data_spg/update', 'MasterTadController@update');
@@ -44,6 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('master_client/hapus/{id}', 'MasterClientController@destroy');
     Route::get('master_client/edit/{id}', 'MasterClientController@edit');
     Route::post('master_client/update', 'MasterClientController@update');
+
+    Route::get('input_prospek' , 'TransaksiController@index');
+    Route::post('input_prospek' , 'TransaksiController@store');
 });
 
 

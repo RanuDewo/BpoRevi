@@ -27,6 +27,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Kode</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Alamat</th>
 
@@ -38,6 +39,7 @@
                                     @foreach ($m as $i)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $i->kode }}</td>
                                             <td>{{ $i->nama_client }}</td>
                                             <td>{{ $i->alamat }}</td>
 
@@ -73,6 +75,12 @@
                     </div>
                     <form action="{{ url('master_client') }}" method="POST">
                         @csrf
+                        <div class="modal-body">
+                            <div class="form-group mt-2">
+                                <label for="">Kode </label>
+                                <input type="text" name="kode" class="form-control mt-2" autofocus required>
+                            </div>
+                        </div>
                         <div class="modal-body">
                             <div class="form-group mt-2">
                                 <label for="">Nama</label>

@@ -18,7 +18,8 @@ class MasterClientController extends Controller
     {
         DB::table('master_client')->insert([
             'nama_client' => $request->nama_client,
-            'alamat' => $request->alamat
+            'alamat' => $request->alamat,
+            'kode' => $request->kode
         ]);
 
         return redirect()->back()->with('simpan', 'ppp');;
