@@ -21,6 +21,12 @@ class MasterApiController extends Controller
 
     }
 
+    public function getMasterData(){
+        $data = DB::table('master_data')->get();
+        $data = json_encode($data) ; 
+        return $data ; 
+    }
+
     public function login(Request $request)
     {
         $pass =  $request->password;
@@ -75,7 +81,8 @@ class MasterApiController extends Controller
             'cdate'        => $tgl ,
             'type'         => '0',
             'nobpkp'       => '',
-            'merek'         => ''
+            'merek'         => '',
+            'status'        => '1',
         ]);
 
         $dt  = array(
@@ -90,8 +97,9 @@ class MasterApiController extends Controller
         DB::table('trans_detail')->insert([
             'id_trans'      => $dataTrans->id,
             'cdate'        => $tgl ,
-            'aksi'         => '0',
-            'status'       => '1'
+            'aksi'         => $request->sumber_data,
+            'status'       => '1',
+            'reason'       => '',
         ]);
         
 
@@ -104,6 +112,112 @@ class MasterApiController extends Controller
         );
         $dt  = json_encode($dt) ;
         return $dt ;
+    }
+
+    public function getdataDetail(Request $request)
+    {
+
+        $id =  $request->id;
+        $data = DB::table('trans')->where('no_trans', $request->noTrans)
+                ->join('cat_trans', 'trans.status', '=', 'cat_trans.id')
+               ->first();
+
+        $data = json_encode($data) ; 
+        
+        return $data ; 
+
+    }
+
+    public function updateProspek(Request $request){
+        $tgl   = date('Y-m-d H:s');
+        if ($request->status== '2'){
+            // 2 order
+            $m = DB::table('trans')->where('no_trans', $request->noTrans)->update(
+                [
+                    'status' => '2'
+                ]
+            );
+
+            //
+            $dataT = DB::table('trans')->where('no_trans', $request->noTrans)->first();
+         
+            DB::table('trans_detail')->insert([
+                'id_trans'      => $dataT->id,
+                'cdate'         => $tgl ,
+                'aksi'          => $request->status,
+                'status'        => '2',
+                'reason'        => $request->reason
+            ]);
+
+        }elseif  ($request->status== '4'){
+            // 4 cancel
+            $m = DB::table('trans')->where('no_trans', $request->noTrans)->update(
+                [
+                    'status' => '4'
+                ]
+            );
+            
+            $dataT = DB::table('trans')->where('no_trans', $request->noTrans)->first();
+            DB::table('trans_detail')->insert([
+                'id_trans'      => $dataT->id,
+                'cdate'         => $tgl ,
+                'aksi'          => $request->status,
+                'status'        => '4',
+                'reason'        => $request->reason
+            ]);
+
+        }elseif  ($request->status== '5'){
+            // 4 cancel
+            $m = DB::table('trans')->where('no_trans', $request->noTrans)->update(
+                [
+                    'status' => '5'
+                ]
+            );
+            
+            $dataT = DB::table('trans')->where('no_trans', $request->noTrans)->first();
+            DB::table('trans_detail')->insert([
+                'id_trans'      => $dataT->id,
+                'cdate'         => $tgl ,
+                'aksi'          => $request->status,
+                'status'        => '5',
+                'reason'        => $request->reason
+            ]);
+
+        }elseif  ($request->status== '6'){
+            // 4 cancel
+            $m = DB::table('trans')->where('no_trans', $request->noTrans)->update(
+                [
+                    'status' => '6'
+                ]
+            );
+            
+            $dataT = DB::table('trans')->where('no_trans', $request->noTrans)->first();
+            DB::table('trans_detail')->insert([
+                'id_trans'      => $dataT->id,
+                'cdate'         => $tgl ,
+                'aksi'          => $request->status,
+                'status'        => '6',
+                'reason'        => $request->reason
+            ]);
+
+        }
+
+        
+        $dt  = array(
+            'status'  => '200' ,
+            'message' => 'data berhasil diupdate' 
+        );
+
+        $data = json_encode($dt) ; 
+        
+        return $data ; 
+
+    }
+
+    public function getTrans(){
+        $data = DB::table('cat_trans')->get();
+        $data = json_encode($data) ; 
+        return $data ; 
     }
 
 }

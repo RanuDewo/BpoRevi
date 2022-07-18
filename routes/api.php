@@ -25,3 +25,12 @@ Route::post('getdata', 'MasterApiController@getdata');
 Route::post('login', 'MasterApiController@login');
 
 Route::post('saveProspek', 'MasterApiController@saveProspek');
+
+Route::get('getMasterData', 'MasterApiController@getMasterData');
+
+Route::post('getdataDetail', 'MasterApiController@getdataDetail');
+
+Route::post('updateProspek', 'MasterApiController@updateProspek');
+
+
+Route::get('getCatTrans', 'MasterApiController@getTrans');
