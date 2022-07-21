@@ -13,44 +13,108 @@ class MasterApiController extends Controller
     {
 
         $id =  $request->id;
+       // echo $id . "-";
         $data = DB::table('trans')->where('userid',$id)->get();
+        $jumx    = count($data);
+        if ($jumx > 0 ){
+            $jum    = count($data);
+            $jum-- ; 
+            $dt   = array(
+                'status'  => '200',
+                'message' => 'sukses'     
+                );
+            for ($x = 0; $x <= $jum; $x++) {
+                   $dtt  = array(
+                                  'id'            => $data[$x]->id ,
+                                  'no_trans'      => $data[$x]->no_trans,
+                                  'nama'          => $data[$x]->nama,
+                                  'cdate'         => $data[$x]->cdate ,
+                                  'nama_lengkap'  => $data[$x]->nama_lengkap,
+                                  'type'          => $data[$x]->type,
+                                  'nobpkp'        => $data[$x]->nobpkp ,
+                                  'merek'         => $data[$x]->merek,
+                                  'phone'         => $data[$x]->phone,
+                                  'userid'        => $data[$x]->userid ,
+                                  'status'        => $data[$x]->status,
+                                
+                   );
+    
+                   $dt['Data'][]= $dtt;
+            }
+        }else{
+            $dt   = array(
+                'status'  => '200',
+                'message' => 'no data'     
+                );
+            $dtt = array();     
+            $dt['Data'][]= $dtt;
+        }
+        
+        
+        $data = json_encode($dt) ;  
+        return $dt ; 
 
-        $data = json_encode($data) ; 
-
-        return $data ; 
 
     }
 
     public function getMasterData(){
-        $data = DB::table('master_data')->get();
-        $data = json_encode($data) ; 
-        return $data ; 
+        $data = DB::table('master_data')
+                ->join('cat_sc', 'master_data.flag', '=', 'cat_sc.id')->get();
+                $jum    = count($data);
+                $jum-- ; 
+                $dt   = array(
+                    'status'  => '200',
+                    'message' => 'sukses'     
+                    );
+                for ($x = 0; $x <= $jum; $x++) {
+                       $dtt  = array(
+                                      'id'      => $data[$x]->id ,
+                                      'nama'    => $data[$x]->nama,
+                                      'flag'    => $data[$x]->flag ,
+                                      'namaSc'  => $data[$x]->namaSc,
+                                    
+                       );
+        
+                       $dt['Data'][]= $dtt;
+                }
+                
+                $data = json_encode($dt) ;  
+                return $dt ; 
     }
 
     public function login(Request $request)
     {
         $pass =  $request->password;
         $password = sha1($pass);
+        $token    = uniqid();
+        // echo uniqid();
 
+        // die() ;
         $data = DB::table('users')
                 ->where('username', $request->username)
                 ->where('password',$password)->first();
 
-    //    echo "<pre>" ; 
-    //    print_r($data) ;
+        
 
        if ($data){
+        $m = DB::table('users')->where('username', $request->username)->update(
+            [
+                'token' => $token
+            ]
+        );
         $dt = array(
             'status'  => '200',
             'message' => 'true',
             'user_id' => $data->id, 
+            'token'   => $token
           ); 
        
        }else{
         $dt = array(
             'status'  => '500',
             'message' => 'false',
-            'user_id' => ''
+            'user_id' => '',
+            'token'   => ''
 
          ); 
        }
@@ -122,9 +186,49 @@ class MasterApiController extends Controller
                 ->join('cat_trans', 'trans.status', '=', 'cat_trans.id')
                ->first();
 
-        $data = json_encode($data) ; 
+        //$jumx    = count($data);
+        if ($data){
+            // $jum    = count($data);
+            // $jum-- ; 
+            $dt   = array(
+                'status'  => '200',
+                'message' => 'sukses'     
+                );
         
-        return $data ; 
+                   $dtt  = array(
+                                  'id'            => $data->id ,
+                                  'no_trans'      => $data->no_trans,
+                                  'nama'          => $data->nama,
+                                  'cdate'         => $data->cdate ,
+                                  'nama_lengkap'  => $data->nama_lengkap,
+                                  'type'          => $data->type,
+                                  'nobpkp'        => $data->nobpkp ,
+                                  'merek'         => $data->merek,
+                                  'phone'         => $data->phone,
+                                  'userid'        => $data->userid ,
+                                  'status'        => $data->status,
+                                  'namaCat'       => $data->namaCat,
+                                
+                   );
+    
+            $dt['Data'][]= $dtt;
+            
+        }else{
+            $dt   = array(
+                'status'  => '200',
+                'message' => 'no data'     
+                );
+            $dtt = array();     
+            $dt['Data'][]= $dtt;
+        }
+       
+        
+        
+        $data = json_encode($dt) ;  
+        return $dt ; 
+        
+        // $data = json_encode($dt) ;  
+        // return $dt ;  
 
     }
 
@@ -216,8 +320,47 @@ class MasterApiController extends Controller
 
     public function getTrans(){
         $data = DB::table('cat_trans')->get();
-        $data = json_encode($data) ; 
-        return $data ; 
+        $jum    = count($data);
+        $jum-- ; 
+        $dt   = array(
+            'status'  => '200',
+            'message' => 'sukses'     
+            );
+        for ($x = 0; $x <= $jum; $x++) {
+               $dtt  = array(
+                              'id'      => $data[$x]->id ,
+                              'namaCat'  => $data[$x]->namaCat,
+                            
+               );
+
+               $dt['Data'][]= $dtt;
+        }
+        
+        $data = json_encode($dt) ;  
+        return $dt ; 
+    }
+
+    public function getSc(){
+        $data = DB::table('cat_sc')->get();
+    
+        $jum    = count($data);
+        $jum-- ; 
+        $dt   = array(
+            'status'  => '200',
+            'message' => 'sukses'     
+            );
+        for ($x = 0; $x <= $jum; $x++) {
+               $dtt  = array(
+                              'id'      => $data[$x]->id ,
+                              'namaSc'  => $data[$x]->namaSc,
+                            
+               );
+
+               $dt['Data'][]= $dtt;
+        }
+        
+        $data = json_encode($dt) ;  
+        return $dt ; 
     }
 
 }
