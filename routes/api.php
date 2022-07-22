@@ -33,3 +33,7 @@ Route::post('getdataDetail', 'MasterApiController@getdataDetail');
 Route::post('updateProspek', 'MasterApiController@updateProspek');
 Route::get('getCatTrans', 'MasterApiController@getTrans');
 Route::get('getCatSc', 'MasterApiController@getSc');
+
+Route::post('benefit', 'MasterApiController@benefit');
+
+Route::post('listBenefit', 'MasterApiController@listBenefit');

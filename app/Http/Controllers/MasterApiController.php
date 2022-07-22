@@ -11,9 +11,7 @@ class MasterApiController extends Controller
 
     public function getdata(Request $request)
     {
-
         $id =  $request->id;
-       // echo $id . "-";
         $data = DB::table('trans')->where('userid',$id)->get();
         $jumx    = count($data);
         if ($jumx > 0 ){
@@ -361,6 +359,110 @@ class MasterApiController extends Controller
         
         $data = json_encode($dt) ;  
         return $dt ; 
+    }
+
+    public function benefit(Request $request)
+    {
+        $id  =  $request->id_user;
+        $tgl =  date('m') ; 
+        // mobil
+        $data = DB::table('trans')
+                ->where('userid',$id)
+                ->where('status','3')
+                ->where('type','1')
+                ->whereMonth('date_boking',$tgl)
+                ->get();
+        $jumx    = count($data);
+        //motor
+        $datam = DB::table('trans')
+        ->where('userid',$id)
+        ->where('status','3')
+        ->where('type','1')
+        ->whereMonth('date_boking',$tgl)
+        ->get();
+        $jumm    = count($datam);
+        $totJum = $jumx + $jumm ;
+      
+      
+        if ($totJum > 0 ){
+            $jum    = count($data);
+            $jum-- ; 
+            $dt   = array(
+                'status'  => '200',
+                'message' => 'sukses'     
+                );
+            // for ($x = 0; $x <= $jum; $x++) {
+                   $dtt  = array(
+                                  'jumlah_boking'    => $totJum ,
+                                  'Nominal'          => '0',
+                                 
+                   );
+    
+                   $dt['Data'][]= $dtt;
+          //  }
+        }else{
+            $dt   = array(
+                'status'  => '200',
+                'message' => 'no data'     
+                );
+            $dtt = array();     
+            $dt['Data'][]= $dtt;
+        }
+        
+        
+        $data = json_encode($dt) ;  
+        return $dt ; 
+
+
+    }
+
+
+    public function listBenefit(Request $request)
+    {
+        $id    =  $request->id_user;
+        $tgl   =  date('m');
+        
+
+        $data = DB::table('trans')
+                ->where('userid',$id)
+                ->where('status','3')
+                ->whereMonth('date_boking',$tgl)
+                ->get();
+        $jumx   = count($data);        
+            // echo "<pre>" ;
+            // print_r($data) ;
+            // die() ;
+        if ($jumx > 0 ){
+            $jum    = count($data);
+            $jum-- ; 
+            $dt   = array(
+                'status'  => '200',
+                'message' => 'sukses'     
+                );
+            for ($x = 0; $x <= $jum; $x++) {
+                   $dtt  = array(
+                                  'id'            => $data[$x]->id ,
+                                  'no_trans'      => $data[$x]->no_trans,
+                                  'date_boking'   => $data[$x]->date_boking,
+                             
+                                
+                   );
+    
+                   $dt['Data'][]= $dtt;
+            }
+        }else{
+            $dt   = array(
+                'status'  => '200',
+                'message' => 'no data'     
+                );
+            $dtt = array();     
+            $dt['Data'][]= $dtt;
+        }
+        
+        
+        $data = json_encode($dt) ;  
+        return $dt ; 
+
     }
 
 }
