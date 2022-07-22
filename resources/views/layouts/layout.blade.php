@@ -276,6 +276,7 @@
                 $b1 = ['master_data', 'master_area', 'master_cabang', 'master_client'];
                 $b2 = ['upload_data_spg'];
                 $b3 = ['maping_area'];
+                $b4 = ['input_prospek'];
                 ?>
                 <a class="{{ request()->is($b1) ? 'nav-link' : 'nav-link collapsed' }}"
                     data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -313,6 +314,23 @@
                 </ul>
             </li>
 
+            <li class="nav-item">
+                <a class="{{ request()->is($b4) ? 'nav-link' : 'nav-link collapsed' }}"
+                    data-bs-target="#components-nav4" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-receipt"></i><span>Data Tansaksi</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav4" class="nav-content collapse {{ request()->is($b4) ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ url('input_prospek') }}"
+                            class="{{ request()->is('input_prospek*') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Input Prospek</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
 
             <li class="nav-item">
                 <a class="{{ request()->is($b3) ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#components-nav2" data-bs-toggle="collapse"

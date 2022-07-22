@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class MasterTadController extends Controller
 {
@@ -76,6 +77,38 @@ class MasterTadController extends Controller
     {
         DB::table('users')->where('id', $id)->delete();
         return redirect('upload_data_spg');
+    }
+
+    public function storeExcel(Request $request)
+    {
+        $fileName = $_FILES["file"]["tmp_name"];
+        if ($_FILES["file"]["size"] > 0) {
+
+            $file = fopen($fileName, "r");
+            $id = NULL ;
+            while (($column = fgetcsv($file, 10000, ";")) !== FALSE) {
+
+                echo $column[0] . "-" ;
+                if ($column[0] == "username"){
+
+                }else{
+
+                }
+                DB::table('users')->insert([
+                    'username' => $column[0],
+                    'name' => $column[1],
+                    'email' => $column[2],
+                    'password' => Hash::make("12345678"),
+                    'cdate' => Date("Y-m-d H:i:s"),
+                    'status' => 5,
+                    'flag' => 1,
+                    'flag2' => 1,
+                    'token' => ''
+                    ]); 
+
+            }
+
+        }
     }
 
    
