@@ -27,6 +27,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Nama Client</th>
                                         <th scope="col">Nama Area</th>
                                         <th scope="col">Nama Cabang</th>
                                         <th scope="col">Action</th>
@@ -37,6 +38,7 @@
                                     @foreach ($m as $i)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>#</td>
                                             <td>{{ $i->nama_area }}</td>
                                             <td>{{ $i->nama_cabang }}</td>
 

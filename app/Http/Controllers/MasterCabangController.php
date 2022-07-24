@@ -27,7 +27,7 @@ class MasterCabangController extends Controller
             [
                 'nama_cabang' => $request->nama,
                 'lat' => $request->lat,
-                'long' => $request->long
+                'longT' => $request->long
             ]
         );
         return redirect()->back()->with('simpan', 'ppp');

@@ -3,12 +3,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Master Area</h1>
+            <h1>Master Cabang</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
 
-                    <li class="breadcrumb-item active">Master Area</li>
+                    <li class="breadcrumb-item active">Master Cabang</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -41,7 +41,7 @@
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $i->nama_cabang }}</td>
                                             <td>{{ $i->lat }}</td>
-                                            <td>{{ $i->long }}</td>
+                                            <td>{{ $i->longT }}</td>
 
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
