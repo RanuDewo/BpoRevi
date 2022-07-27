@@ -19,15 +19,22 @@ class MasterCabangController extends Controller
     {
         //
     }
-
+ 
 
     public function store(Request $request)
     {
+        $count = DB::table('tbl_count')->first();
+        DB::table('tbl_count')->where('id', $count->id)->update(
+            ['id' => $count->id + 1]
+        );
+        $count2 = DB::table('tbl_count')->first();
+        $kode = 'CB000' . $count2->id;
         DB::table('master_cabang')->insert(
             [
                 'nama_cabang' => $request->nama,
                 'lat' => $request->lat,
-                'longT' => $request->long
+                'longT' => $request->long,
+                'kode_cabang' => $kode ,
             ]
         );
         return redirect()->back()->with('simpan', 'ppp');

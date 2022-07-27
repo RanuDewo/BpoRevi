@@ -33,6 +33,8 @@
                                         <th scope="col">Nama</th>
                                         <th scope="col">username</th>
                                         <th scope="col">email</th>
+                                        <th scope="col">Cabang</th>
+                                        <th scope="col">Zona</th>
                                         <th scope="col">Action</th>
 
                                     </tr>
@@ -44,10 +46,12 @@
                                             <td>{{ $i->name }}</td>
                                              <td>{{ $i->username }}</td>
                                              <td>{{ $i->email }}</td>
+                                             <td>{{ $i->nama_cabang }}</td>
+                                             <td><?php if($i->zona == "0" ){echo "Free Zone" ; } else { echo "In Zone" ;}  echo "-" .  $i->zona ; ?></td>
                                             <td><a href="#" class="btn btn-success btn-sm mt-2 mr-2 edit"
                                                     data-id="{{ $i->id }}" data-bs-toggle="modal"
                                                     data-bs-target="#editModal"><i class="bi bi-pencil-square"></i>
-                                                    Setting Role</a>
+                                                    Edit Zona</a>
                                                 <a href="{{ url('/upload_data_spg/hapus/' . $i->id) }}" id="hapus"
                                                     class="btn btn-danger btn-sm mt-2 mr-2 hapus"
                                                     data-id="{{ $i->name }}"><i class="bi bi-trash"></i>
@@ -113,7 +117,7 @@
 
 
                             <div class="form-group mt-2">
-                                <label for="">Excel</label>
+                                <label for="">CSV</label>
                                 <input type="file" name="file" class="form-control mt-2" autofocus required>
                             </div>
                         </div>
@@ -130,7 +134,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Seting Role</h5>
+                        <h5 class="modal-title">Edit Zona</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{ url('upload_data_spg/update') }}" method="POST">

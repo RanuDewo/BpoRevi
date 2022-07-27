@@ -27,6 +27,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Kode Cabang</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Lat</th>
                                         <th scope="col">Long</th>
@@ -39,6 +40,7 @@
                                     @foreach ($m as $i)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $i->kode_cabang }}</td>
                                             <td>{{ $i->nama_cabang }}</td>
                                             <td>{{ $i->lat }}</td>
                                             <td>{{ $i->longT }}</td>

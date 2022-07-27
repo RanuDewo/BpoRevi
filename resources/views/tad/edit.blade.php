@@ -4,15 +4,15 @@
     <input type="text" name="nama" class="form-control mt-2" value="{{ $m->name }}" autofocus required>
 </div>
 <div class="form-group mt-2">
-    <label for="">Level</label>
-    <select name="flag" id="" class="form-select mt-2">
-        <option value="5" {{ $m->flag == '1' ? 'selected' : '' }}>Area</option>
-        <option value="4" {{ $m->flag == '2' ? 'selected' : '' }}>Cabang / SM</option>
+    <label for="">Zona</label>
+    <select name="zona" id="" class="form-select mt-2">
+        <option value="0">Free zone</option>
+        <option value="1">In zone </option>
     </select>
 </div>
 
 
-<div class="form-group mt-2">
+<!-- <div class="form-group mt-2">
     <label for="">Area</label>
     <select class = "form-control" name ="area">
         <?php
@@ -36,4 +36,4 @@
              }
         ?>
      </select>
-</div>
+</div> -->

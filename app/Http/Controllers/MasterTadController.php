@@ -12,7 +12,8 @@ class MasterTadController extends Controller
     public function index()
     {
         $m = DB::table('users')
-            ->where('username','<>','superadmin')->get();
+             ->join('master_cabang', 'users.kode_cabang', '=', 'master_cabang.id')
+             ->where('username','<>','superadmin')->get();
         return view('tad.index', compact('m'));
     }
 
@@ -56,20 +57,29 @@ class MasterTadController extends Controller
 
     public function update(Request $request)
     {
-        $m = DB::table('users')->where('id', $request->id)->update(
+        // $m = DB::table('users')->where('id', $request->id)->update(
+        //     [
+        //         'status' => $request->flag
+        //     ]
+        // );
+
+        // DB::table('maps_users')->insert([
+        //     'id_user_parent'      => $request->id,
+        //     'id_user_child'       => $request->id,
+        //     'id_cabang'           => $request->cabang,
+        //     'id_area'             => $request->area,
+
+        // ]);
+
+
+       $m = DB::table('users')->where('id', $request->id)->update(
             [
-                'status' => $request->flag
+                'zona' => $request->zona
             ]
         );
-
-        DB::table('maps_users')->insert([
-            'id_user_parent'      => $request->id,
-            'id_user_child'       => $request->id,
-            'id_cabang'           => $request->cabang,
-            'id_area'             => $request->area,
-
-        ]);
-
+        
+        echo $request->id . "_" . $request->zona;
+        die() ;
         return redirect('upload_data_spg');
     }
 
@@ -88,27 +98,33 @@ class MasterTadController extends Controller
             $id = NULL ;
             while (($column = fgetcsv($file, 10000, ";")) !== FALSE) {
 
-                echo $column[0] . "-" ;
+               // echo $column[0] . "-" ;
                 if ($column[0] == "username"){
 
                 }else{
-
+                    $m = DB::table('master_cabang')->where('kode_cabang', $column[3])->first();
+                    // echo $column[3] ;
+                    // print_r($m);
+                    DB::table('users')->insert([
+                        'username' => $column[0],
+                        'name' => $column[1],
+                        'email' => $column[2],
+                        'password' => Hash::make("12345678"),
+                        'cdate' => Date("Y-m-d H:i:s"),
+                        'status' => 1,
+                        'flag' => 1,
+                        'flag2' => 1,
+                        'token' => '',
+                        'kode_cabang' =>  $m->id
+                        ]); 
+    
                 }
-                DB::table('users')->insert([
-                    'username' => $column[0],
-                    'name' => $column[1],
-                    'email' => $column[2],
-                    'password' => Hash::make("12345678"),
-                    'cdate' => Date("Y-m-d H:i:s"),
-                    'status' => 5,
-                    'flag' => 1,
-                    'flag2' => 1,
-                    'token' => ''
-                    ]); 
 
+               
             }
-
+          //   die() ;
         }
+        return redirect('upload_data_spg');
     }
 
    
