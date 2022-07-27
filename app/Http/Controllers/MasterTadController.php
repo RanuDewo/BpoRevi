@@ -13,6 +13,7 @@ class MasterTadController extends Controller
     {
         $m = DB::table('users')
              ->join('master_cabang', 'users.kode_cabang', '=', 'master_cabang.id')
+             ->select('users.*', 'master_cabang.nama_cabang')
              ->where('username','<>','superadmin')->get();
         return view('tad.index', compact('m'));
     }
@@ -48,10 +49,14 @@ class MasterTadController extends Controller
 
     public function edit($id)
     {
-        $m = DB::table('users')->where('id', $id)->first();
-        $cabang  =  DB::table('master_cabang')->get();
-        $area    =  DB::table('master_area')->get();
-        return view('tad.edit', ['m'=>$m,'cabang'=>$cabang,'area'=>$area]);
+        // $m = DB::table('users')->where('id', $id)->first();
+        // $cabang  =  DB::table('master_cabang')->get();
+        // $area    =  DB::table('master_area')->get();
+        $user    =  DB::table('users')->where('id',$id)->first();
+        // echo "<pre>" ;
+        // print_r($user); 
+        // die() ; 
+        return view('tad.edit', ['user'=>$user]);
     }
 
 
@@ -78,8 +83,8 @@ class MasterTadController extends Controller
             ]
         );
         
-        echo $request->id . "_" . $request->zona;
-        die() ;
+        // echo $request->id . "_" . $request->zona;
+        // die() ;
         return redirect('upload_data_spg');
     }
 
